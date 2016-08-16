@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/charite/weka-GWAVA.svg?branch=master)](https://travis-ci.org/charite/weka-GWAVA)
-[![API Docs](https://img.shields.io/badge/api-v0.2-blue.svg?style=flat)](http://charite.github.io/weka-GWAVA/api/0.1/)
+[![API Docs](https://img.shields.io/badge/api-v0.1-blue.svg?style=flat)](http://charite.github.io/weka-GWAVA/api/0.1/)
 [![license](https://img.shields.io/badge/licence-GNU%20GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.txt)
 
 # weka-GWAVA
