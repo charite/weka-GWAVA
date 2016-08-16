@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Weka-gwava by charite</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Weka-gwava</h1>
+        <h2>Weka implementation of the GWAVA method from  Ritchie, G. R. S., Dunham, I., Zeggini, E., &amp; Flicek, P. (2014). Functional annotation of noncoding sequence variants. Nat Methods, 11(3), 294–296. http://doi.org/10.1038/nmeth.2832</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/charite/weka-GWAVA/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/charite/weka-GWAVA/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/charite/weka-GWAVA" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <p><a href="https://travis-ci.org/charite/weka-GWAVA"><img src="https://travis-ci.org/charite/weka-GWAVA.svg?branch=master" alt="Build Status"></a>
+<a href="http://charite.github.io/weka-GWAVA/api/0.1/"><img src="https://img.shields.io/badge/api-v0.1-blue.svg?style=flat" alt="API Docs"></a>
+<a href="https://www.gnu.org/licenses/gpl-3.0.txt"><img src="https://img.shields.io/badge/licence-GNU%20GPLv3-blue.svg" alt="license"></a></p>
+
+<h1>
+<a id="weka-gwava" class="anchor" href="#weka-gwava" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>weka-GWAVA</h1>
+
+<p>Weka implementation of the GWAVA method from 
+Ritchie, G. R. S., Dunham, I., Zeggini, E., &amp; Flicek, P. (2014). Functional annotation of noncoding sequence variants. Nat Methods, 11(3), 294–296. <a href="http://doi.org/10.1038/nmeth.2832">http://doi.org/10.1038/nmeth.2832</a></p>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p>weka-GWAVA requires java 8 and higher. It can be used as a <a href="http://www.cs.waikato.ac.nz/%7Eml/weka/">Weka</a> plugin using version 3.9 or higher. To build the program it is recommended to use <a href="https://maven.apache.org/">Maven</a>.</p>
+
+<h2>
+<a id="installation-from-github-sources" class="anchor" href="#installation-from-github-sources" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation from GitHub sources</h2>
+
+<p>To use weka-GWAVA in <a href="http://www.cs.waikato.ac.nz/%7Eml/weka/">Weka</a> three steps are needed.</p>
+
+<ol>
+<li>Clone this repository.</li>
+<li>Compile the java classes and create a Weka plugin using Maven<br>
+</li>
+<li>Load the plugin into your Weka Package Manager</li>
+</ol>
+
+<h3>
+<a id="clone-this-repository" class="anchor" href="#clone-this-repository" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Clone this repository</h3>
+
+<p>Use your terminal and go to a folder where you want to checkout weka-GWAVA. Then run:</p>
+
+<pre><code>git clone https://github.com/charite/weka-GWAVA.git
+</code></pre>
+
+<h3>
+<a id="compile-the-java-classes-and-create-the-weka-plugin" class="anchor" href="#compile-the-java-classes-and-create-the-weka-plugin" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compile the java classes and create the Weka plugin</h3>
+
+<p>Go to your repository and create a jar file of weka-GWAVA using Maven.</p>
+
+<pre><code>cd weka-GWAVA
+
+mvn clean install package
+</code></pre>
+
+<p>Now you should have the  <code>weka-GWAVA-0.1.jar</code> in the folder <code>target/</code>. The package phase of Maven creates also the Weka  file <code>weka-GWAVA-0.1-weka.zip</code>. It is located in the <code>target/</code> folder.</p>
+
+<h3>
+<a id="load-the-plugin-into-your-weka-package-manager" class="anchor" href="#load-the-plugin-into-your-weka-package-manager" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Load the plugin into your Weka Package Manager</h3>
+
+<p>Open Weka, go to the package manager, and load the file <code>weka-GWAVA-0.2-weka.zip</code> into it.  Look at the <a href="http://weka.wikispaces.com/How+do+I+use+the+package+manager%3F">Weka wiki</a> for more information about the Weka Package Manager.</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
