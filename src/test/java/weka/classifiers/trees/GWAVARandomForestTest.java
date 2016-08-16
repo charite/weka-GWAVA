@@ -19,6 +19,13 @@ import com.google.common.io.Resources;
 import weka.classifiers.Evaluation;
 import weka.core.Instances;
 
+/**
+ * 
+ * test class for {@link GWAVARandomForest}
+ * 
+ * @author <a href="mailto:max.schubach@charite.de">Max Schubach</a>
+ *
+ */
 public class GWAVARandomForestTest {
 
 	private Instances randDiabetesData;
@@ -30,6 +37,12 @@ public class GWAVARandomForestTest {
 	private int seed = 42;
 	private int folds = 10;
 
+	/**
+	 * 
+	 * setup (load data etc.)
+	 * 
+	 * @throws Exception
+	 */
 	@Before
 	public void setUp() throws Exception {
 		File file = new File(Resources.getResource(diabetesFile).getPath());
@@ -60,6 +73,11 @@ public class GWAVARandomForestTest {
 		randGeneratedImbalancedData.randomize(rand);
 	}
 
+	/**
+	 * test GWAVA vs tree
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void classifyJ48Test() throws Exception {
 
@@ -69,7 +87,7 @@ public class GWAVARandomForestTest {
 		eval.crossValidateModel(gwava, randDiabetesData, folds, new Random(seed));
 
 		double prcGWAVA = eval.areaUnderPRC(1);
-		double rocGWAVA= eval.areaUnderROC(1);
+		double rocGWAVA = eval.areaUnderROC(1);
 
 		eval = new Evaluation(randDiabetesData);
 		eval.crossValidateModel(new J48(), randDiabetesData, folds, new Random(seed));
@@ -80,6 +98,11 @@ public class GWAVARandomForestTest {
 		assertThat(rocGWAVA, Matchers.greaterThan(rocJ48));
 	}
 
+	/**
+	 * test gwava vs tree bin data
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void classifyRFRandomBinDataTest() throws Exception {
 
@@ -89,17 +112,22 @@ public class GWAVARandomForestTest {
 
 		Evaluation eval = new Evaluation(randGeneratedImbalancedBinData);
 		eval.crossValidateModel(gwava, randGeneratedImbalancedBinData, folds, new Random(seed));
-		double prcHyperSMURF = eval.areaUnderPRC(1);
-		double rocHyperSMURF = eval.areaUnderROC(1);
+		double prcGWAVA = eval.areaUnderPRC(1);
+		double rocGWAVA = eval.areaUnderROC(1);
 		eval = new Evaluation(randGeneratedImbalancedBinData);
 		eval.crossValidateModel(new J48(), randGeneratedImbalancedBinData, folds, new Random(seed));
 		double prcJ48 = eval.areaUnderPRC(1);
 		double rocJ48 = eval.areaUnderROC(1);
 
-		assertThat(prcHyperSMURF, Matchers.greaterThan(prcJ48));
-		assertThat(rocHyperSMURF, Matchers.greaterThan(rocJ48));
+		assertThat(prcGWAVA, Matchers.greaterThan(prcJ48));
+		assertThat(rocGWAVA, Matchers.greaterThan(rocJ48));
 	}
 
+	/**
+	 * test gwava vst tree using random data
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void classifyRFRandomDataTest() throws Exception {
 

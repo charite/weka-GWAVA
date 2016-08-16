@@ -1,10 +1,16 @@
 package weka.classifiers.trees;
 
-import weka.classifiers.trees.RandomForest;
 import weka.core.Instances;
 import weka.filters.Filter;
 import weka.filters.supervised.instance.SpreadSubsample;
 
+/**
+ * The GWAVA random forest. Important that for every training set the majority class must be subsampled to the minority
+ * class.
+ * 
+ * @author <a href="mailto:max.schubach@charite.de">Max Schubach</a>
+ *
+ */
 public class GWAVARandomForest extends RandomForest {
 
 	/**

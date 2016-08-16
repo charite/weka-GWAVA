@@ -17,6 +17,13 @@ import weka.classifiers.Evaluation;
 import weka.classifiers.trees.J48;
 import weka.core.Instances;
 
+/**
+ * 
+ * test class for {@link GWAVABagging}
+ * 
+ * @author <a href="mailto:max.schubach@charite.de">Max Schubach</a>
+ *
+ */
 public class GWAVABaggingTest {
 
 	private static Instances data;
@@ -25,6 +32,11 @@ public class GWAVABaggingTest {
 	private static int seed = 42;
 	private int folds = 10;
 
+	/**
+	 * set up
+	 * 
+	 * @throws Exception
+	 */
 	@Before
 	public void setUp() throws Exception {
 		File file = new File(Resources.getResource(diabetesFile).getPath());
@@ -38,6 +50,11 @@ public class GWAVABaggingTest {
 		randData.randomize(rand);
 	}
 
+	/**
+	 * test the tree
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void classifyJ48Test() throws Exception {
 
