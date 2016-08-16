@@ -19,7 +19,7 @@ import com.google.common.io.Resources;
 import weka.classifiers.Evaluation;
 import weka.core.Instances;
 
-public class HyperSMURFTest {
+public class GWAVARandomForestTest {
 
 	private Instances randDiabetesData;
 	private Instances randGeneratedImbalancedBinData;
@@ -63,18 +63,36 @@ public class HyperSMURFTest {
 	@Test
 	public void classifyJ48Test() throws Exception {
 
-		HyperSMURF hyperSMURF = new HyperSMURF();
-		hyperSMURF.setNumIterations(2);
-		hyperSMURF.setClassifier(new J48());
+		GWAVARandomForest gwava = new GWAVARandomForest();
 
 		Evaluation eval = new Evaluation(randDiabetesData);
-		eval.crossValidateModel(hyperSMURF, randDiabetesData, folds, new Random(seed));
+		eval.crossValidateModel(gwava, randDiabetesData, folds, new Random(seed));
 
-		double prcHyperSMURF = eval.areaUnderPRC(1);
-		double rocHyperSMURF = eval.areaUnderROC(1);
+		double prcGWAVA = eval.areaUnderPRC(1);
+		double rocGWAVA= eval.areaUnderROC(1);
 
 		eval = new Evaluation(randDiabetesData);
 		eval.crossValidateModel(new J48(), randDiabetesData, folds, new Random(seed));
+		double prcJ48 = eval.areaUnderPRC(1);
+		double rocJ48 = eval.areaUnderROC(1);
+
+		assertThat(prcGWAVA, Matchers.greaterThan(prcJ48));
+		assertThat(rocGWAVA, Matchers.greaterThan(rocJ48));
+	}
+
+	@Test
+	public void classifyRFRandomBinDataTest() throws Exception {
+
+		GWAVARandomForest gwava = new GWAVARandomForest();
+		gwava.setNumIterations(20);
+		gwava.setNumExecutionSlots(10);
+
+		Evaluation eval = new Evaluation(randGeneratedImbalancedBinData);
+		eval.crossValidateModel(gwava, randGeneratedImbalancedBinData, folds, new Random(seed));
+		double prcHyperSMURF = eval.areaUnderPRC(1);
+		double rocHyperSMURF = eval.areaUnderROC(1);
+		eval = new Evaluation(randGeneratedImbalancedBinData);
+		eval.crossValidateModel(new J48(), randGeneratedImbalancedBinData, folds, new Random(seed));
 		double prcJ48 = eval.areaUnderPRC(1);
 		double rocJ48 = eval.areaUnderROC(1);
 
@@ -83,37 +101,14 @@ public class HyperSMURFTest {
 	}
 
 	@Test
-	public void classifyRFRandomBinDataTest() throws Exception {
-
-		HyperSMURF hyperSMURF = new HyperSMURF();
-		hyperSMURF.setNumIterations(10);
-		hyperSMURF.setNumExecutionSlots(10);
-		hyperSMURF.setClassifier(new J48());
-
-		Evaluation eval = new Evaluation(randGeneratedImbalancedBinData);
-		eval.crossValidateModel(hyperSMURF, randGeneratedImbalancedBinData, folds, new Random(seed));
-
-		double prcHyperSMURF = eval.areaUnderPRC(0);
-		double rocHyperSMURF = eval.areaUnderROC(0);
-		eval = new Evaluation(randGeneratedImbalancedBinData);
-		eval.crossValidateModel(new J48(), randGeneratedImbalancedBinData, folds, new Random(seed));
-		double prcJ48 = eval.areaUnderPRC(0);
-		double rocJ48 = eval.areaUnderROC(0);
-
-		assertThat(prcHyperSMURF, Matchers.greaterThan(prcJ48));
-		assertThat(rocHyperSMURF, Matchers.greaterThan(rocJ48));
-	}
-
-	@Test
 	public void classifyRFRandomDataTest() throws Exception {
 
-		HyperSMURF hyperSMURF = new HyperSMURF();
-		hyperSMURF.setNumIterations(50);
-		hyperSMURF.setPercentage(200.0);
-		hyperSMURF.setNumExecutionSlots(10);
+		GWAVARandomForest gwava = new GWAVARandomForest();
+		gwava.setNumIterations(50);
+		gwava.setNumExecutionSlots(10);
 
 		Evaluation eval = new Evaluation(randGeneratedImbalancedData);
-		eval.crossValidateModel(hyperSMURF, randGeneratedImbalancedData, folds, new Random(seed));
+		eval.crossValidateModel(gwava, randGeneratedImbalancedData, folds, new Random(seed));
 
 		double prcHyperSMURF = eval.areaUnderPRC(1);
 		double rocHyperSMURF = eval.areaUnderROC(1);

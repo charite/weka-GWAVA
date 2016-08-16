@@ -15,13 +15,6 @@
 				<include>${groupId}:${artifactId}</include>
 			</includes>
 		</dependencySet>
-		<dependencySet>
-			<outputDirectory>lib</outputDirectory>
-			<unpack>false</unpack>
-			<includes>
-				<include>nz.ac.waikato.cms.weka:SMOTE</include>
-			</includes>
-		</dependencySet>
 	</dependencySets>
 	<fileSets>
 		<fileSet>

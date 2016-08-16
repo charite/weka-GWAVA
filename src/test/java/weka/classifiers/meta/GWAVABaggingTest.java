@@ -17,7 +17,7 @@ import weka.classifiers.Evaluation;
 import weka.classifiers.trees.J48;
 import weka.core.Instances;
 
-public class EasyEnsembleTest {
+public class GWAVABaggingTest {
 
 	private static Instances data;
 	private static Instances randData;
@@ -41,23 +41,23 @@ public class EasyEnsembleTest {
 	@Test
 	public void classifyJ48Test() throws Exception {
 
-		EasyEnsemble easyEnsemble = new EasyEnsemble();
-		easyEnsemble.setNumIterations(3);
-		easyEnsemble.setClassifier(new J48());
+		GWAVABagging gwavaBagging = new GWAVABagging();
+		gwavaBagging.setNumIterations(10);
+		gwavaBagging.setClassifier(new J48());
 
 		Evaluation eval = new Evaluation(randData);
-		eval.crossValidateModel(easyEnsemble, randData, folds, new Random(seed));
+		eval.crossValidateModel(gwavaBagging, randData, folds, new Random(seed));
 
-		double prcEasyEnsemble = eval.areaUnderPRC(1);
-		double rocEasyEnsemble = eval.areaUnderROC(1);
+		double prcGWAVABagging = eval.areaUnderPRC(1);
+		double rocGWAVABagging = eval.areaUnderROC(1);
 
 		eval = new Evaluation(randData);
 		eval.crossValidateModel(new J48(), randData, folds, new Random(seed));
 		double prcJ48 = eval.areaUnderPRC(1);
 		double rocJ48 = eval.areaUnderROC(1);
 
-		assertThat(prcEasyEnsemble, Matchers.greaterThan(prcJ48));
-		assertThat(rocEasyEnsemble, Matchers.greaterThan(rocJ48));
+		assertThat(prcGWAVABagging, Matchers.greaterThan(prcJ48));
+		assertThat(rocGWAVABagging, Matchers.greaterThan(rocJ48));
 	}
 
 }

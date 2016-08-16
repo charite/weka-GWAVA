@@ -1,20 +1,20 @@
-# Description file for the hyperSMURF Weka package
+# Description file for the GWAVA Weka package
 # 
 
 # Package name (required)
-PackageName=hyperSMURF
+PackageName=weka-GWAVA
 
 # Version (required)
-Version=0.2.0
+Version=0.1.0
 
 #Date (year-month-day)
-Date=2016-05-23
+Date=2016-08-16
 
 # Title (required)
-Title=Hyper SMOTE Undersampling with Random Forests (HyperSMURF)
+Title=Weka GWAVA implementation of Ritchie, GRS et al
 
 # Category (recommended)
-Category=Ensemble learning, Classification
+Category=Random forest, Ensemble learning, Classification
 
 # Author (required)
 Author=Max Schubach <max.schubach@charite.de>
@@ -26,13 +26,16 @@ Maintainer=Max Schubach <max.schubach@charite.de>
 License=GNU General Public License v3.0
 
 # Description (required)
-Description=A one paragraph description of the package.
+Description=Weka implementation of the GWAVA method from 
+Ritchie, G. R. S., Dunham, I., Zeggini, E., & Flicek, P. (2014). 
+Functional annotation of noncoding sequence variants. Nat Methods, 11(3), 294–296. 
+http://doi.org/10.1038/nmeth.2832
 
 # Package URL for obtaining the package archive (required)
-PackageURL=http://somewhere.net/weka/funkyPackage.zip?download
+PackageURL=http://charite.github.io/weka-GWAVA/weka/weka-GWAVA-0.1-weka.zip
 
 # URL for further information
-URL=http://somewhere.net/funkyResearchInfo.html
+URL=http://charite.github.io/weka-GWAVA/
 
 # Enhances various other packages ?
 #Enhances=packageName1,packageName2,...
@@ -43,7 +46,7 @@ URL=http://somewhere.net/funkyResearchInfo.html
 #Related=
 
 # Dependencies (format: packageName (equality/inequality version_number)
-Depends=weka (>=3.9.0),SMOTE (>=1.0.3)
+Depends=weka (>=3.9.0)
 
 # Message to display in installation. Can be used to provide
 # special instructions (e.g. manual stuff needed to complete
